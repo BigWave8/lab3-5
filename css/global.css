@@ -1,0 +1,9 @@
+body{
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.25rem;
+    padding: 0;
+}
+
+.contatiner{
+    max-width:  100%;
+}

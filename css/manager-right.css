@@ -1,0 +1,65 @@
+.manager__right{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 75vw;
+    font-size: 1rem;
+    line-height: 120%;
+}
+
+.object{
+    margin: 10px 10px;
+    height: 400px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 10px double gold;
+    border-radius: 20px;
+    padding-top: 10px;
+}
+
+.notebook-icon{
+    width: 240px;
+    height: 160px;
+}
+
+.object h2{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 5px auto;
+}
+
+.object-description{
+    flex-grow: 1;
+    align-items: center;
+    padding: 10px;
+}
+
+.time-update{
+    margin-left: 10px;
+}
+
+.object__button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-edit{
+    height: 40px;
+    width: 100px;
+    color: white;
+    background: rgb(0, 0, 255);
+    margin: 10px auto;
+    border: transparent;
+}
+
+.button-remove{
+    height: 40px;
+    width: 100px;
+    color: white;
+    background: rgb(255, 0, 0);
+    margin: 10px auto;
+    border: transparent;
+}
