@@ -4,12 +4,16 @@
     flex-wrap: wrap;
     align-items: center;
     width: 75vw;
+    border-left: 2px solid;
+    border-color: rgba(0, 0, 0, 0.4);
     font-size: 1rem;
     line-height: 120%;
+    margin-left: 384px;
+    padding-top: 74px;
 }
 
 .object{
-    margin: 10px 10px;
+    margin: 10px 11.6px;
     height: 400px;
     width: 240px;
     display: flex;

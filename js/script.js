@@ -31,13 +31,13 @@ let stationeries = [{
 
 const stationeriesContainer = document.getElementById("stationeries");
 
-function showStationery(){
+function showStationery(stationeries){
     let innerItem = "";
     stationeries.forEach(item=>{
         innerItem += `<div class="object">
         <img class="notebook-icon" src="images/notebook.svg" alt="Notebook">
         <h2 class="object-name">Notebook</h2>
-        <p class="object-description">Price: ${item.price} UAH<br>Producer: ${item.producer}<br>Bar code: ${item.par_code}<br>Target age: 12</code></p>
+        <p class="object-description">Price: ${item.price} UAH<br>Producer: ${item.producer}<br>Bar code: ${item.barCode}<br>Target age: ${item.targetAge}</code></p>
         <div class="time-update">Last time update: 1s</div>
         <div class="object__button">
             <button class="button-edit">Edit</button>
@@ -47,13 +47,13 @@ function showStationery(){
     });
     stationeriesContainer.innerHTML=innerItem;
 }
-showStationery();
+showStationery(stationeries);
 
 function sortStationery(){
     stationeries.sort(function(obj1, obj2){
         return obj1.price > obj2.price ? 1:-1;
     });
-    showStationery();
+    showStationery(stationeries);
 }
 
 function countStationery(){
@@ -63,3 +63,19 @@ function countStationery(){
     });
     document.getElementById("counter").innerHTML=sum;
 }
+
+function findStationery(){
+    let findedElement = document.getElementById("finder").value;
+    let findResult = [];
+    stationeries.forEach(item=>{
+        if(findedElement==item.targetAge){
+            findResult.push(item);
+        }
+    });
+    showStationery(findResult);
+}
+
+function clearStationery(){
+    document.getElementById("finder").value = "";
+    showStationery(stationeries);
+}   

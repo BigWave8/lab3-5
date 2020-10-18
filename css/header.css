@@ -6,6 +6,12 @@
     height: 72px;
     padding: 0 25px;
     border-bottom: 2px solid rgba(0,0,0,0.4);
+    position: fixed;
+    background: #FFF;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .header__left a{
