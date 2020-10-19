@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-color: rgba(0, 0, 0, 0.4);
+    height: 95vw;
     width: 25vw;
     position: fixed;
     background: #FFF;
@@ -98,9 +102,8 @@ input:checked + .slider:before {
     width: 120px;
     font-weight: 500;
     color: blue;
-    background: white;
+    background: #FFF;
     border-color: red;
-    border-radius: 100px;
+    border-radius: 20px;
     margin: 20px auto;
-    border: transparent;
 }
