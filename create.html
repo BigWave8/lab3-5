@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationery Shop</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" as="font" href="//fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&amp;display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"rel="stylesheet"/>
+</head>
+<body> 
+    <header class="header contatiner">
+        <div class="header__left">
+            <a class="header__nav-item" href="">Stationery<a>
+            <a class="header__nav-item" href="index.html">My Stationeries<a>
+            <a class="header__nav-item" href="">Create Stationery<a>
+        </div>
+        <div class="header__right">
+            <div class="header__right-type">
+                <input type="text" name="search"
+                placeholder=" Type something there..." id="finder">
+            </div>
+            <button class="button-search" onclick="findStationery()">Search</button>
+            <button class="button-clear" onclick="clearStationery()">Clear</button>
+        </div>
+    </header>
+    <section class="create container">
+        <form name="editStationery" action="index.html">
+            <p class="form__title">Create Stationery</p>
+
+            <label for="price">Price (UAH):</label>
+            <input id="price_input" type="number" step="any" name="price" required />
+    
+            <label for="producer">Producer:</label>
+            <select id="producer_select" name="producer">
+                <option value="Apple" selected>Apple</option>
+                <option value="WIN">WIN</option>
+                <option value="Skiper">Skiper</option>
+            </select>
+
+            <label for="barCode">Bar code:</label>
+            <input id="bar_code_input" type="text" name="barCode" required />
+
+            <label for="targetAge">Target age:</label>
+            <input id="target_age_input" type="number" step="any" name="ageGroup" required />
+    
+            <input id="submit_button" type="submit" class="submit" value="Submit" />
+        </form>
+    </section>
+    <div id="popup" class="popup">
+        <div class="popup-content contatiner">
+            <p id="popup-message" class="popup-message"> Error! </p>
+            <span class="popup-close">&times;</span>
+        </div>
+    </div>
+    <script src="js/create.js"></script>
+</body>
+</html>

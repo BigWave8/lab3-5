@@ -1,7 +1,14 @@
 @import "./reset.min.css";
 @import "./normalize.min.css";
 @import "./global.css";
+
 @import "./header.css";
 @import "./manager.css";
 @import "./manager-left.css";
 @import "./manager-right.css";
+
+@import "./create.css";
+@import "./edit.css";
+
+@import "./popup.css";
+@import "./animation.css";

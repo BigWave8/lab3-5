@@ -6,21 +6,21 @@
     <title>Stationery Shop</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" as="font" href="//fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&amp;display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"rel="stylesheet"/>
+
+    <!-- UUID library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.2.0/uuid.min.js"></script>
 </head>
 <body> 
     <header class="header contatiner">
-        <div class="header__left">
-            <a class="header__nav-item" href="#">Stationery<a>
-            <a class="header__nav-item" href="#">My Stationeries<a>
-            <a class="header__nav-item" href="#">Create Stationery<a>
+        <div class="header__left" id="shadowBox">
+            <a class="header__nav-item">Stationery<a>
+            <a class="header__nav-item" href="">My Stationeries<a>
+            <a class="header__nav-item" href="create.html">Create Stationery<a>
         </div>
         <div class="header__right">
-            <div class="header__right-type">
-                <input type="text" name="search"
-                placeholder=" Type something there..." id="finder">
-            </div>
-            <button class="button-search" onclick="findStationery()">Search</button>
-            <button class="button-clear" onclick="clearStationery()">Clear</button>
+            <input type="text" name="search"
+            placeholder=" Type something there..." id="finder" oninput="findStationery()">
         </div>
     </header>
     <section class="manager contatiner">
@@ -40,18 +40,18 @@
             </div>
         </div>
         <div class="manager__right" id="stationeries">
-            <div class="object">
+            <div id="object" class="object">
                 <img class="notebook-icon" src="images/notebook.svg" alt="Notebook">
                 <h2 class="object-name">Notebook</h2>
                 <p class="object-description">Price: 123 UAH<br>Producer: WIN<br>Bar code: 12341234<br>Target age: 12</code></p>
                 <div class="time-update">Last time update: 123s</div>
                 <div class="object__button">
-                    <button class="button-edit">Edit</button>
-                    <button class="button-remove">Remove</button>
+                    <button onclick="goToEdit" class="button-edit">Edit</button>
+                    <button id="remove_button" class="button-remove">Remove</button>
                 </div>
             </div>
         </div>
     </section>
-    <script src="js/script.js"></script>
+    <script  src="js/script.js"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+const submitButton = document.getElementById("submit_button");
+const removeButton = document.getElementById("remove_button");
+
 let stationeries = [{
     price: 123,
     producer: "WIN",
@@ -31,17 +34,30 @@ let stationeries = [{
 
 const stationeriesContainer = document.getElementById("stationeries");
 
+const addItem = ({ price, producer, barCode, targetAge }) => {
+    const generatedId = uuid.v1();
+    const newItem = {
+    id: generatedId,
+    price, 
+    producer, 
+    barCode, 
+    targetAge,
+    };
+    stationeries.push(newItem);
+    addItemToPage(newItem);
+};
+
 function showStationery(stationeries){
     let innerItem = "";
-    stationeries.forEach(item=>{
+    stationeries.forEach((item, index)=>{
         innerItem += `<div class="object">
         <img class="notebook-icon" src="images/notebook.svg" alt="Notebook">
         <h2 class="object-name">Notebook</h2>
         <p class="object-description">Price: ${item.price} UAH<br>Producer: ${item.producer}<br>Bar code: ${item.barCode}<br>Target age: ${item.targetAge}</code></p>
         <div class="time-update">Last time update: 1s</div>
         <div class="object__button">
-            <button class="button-edit">Edit</button>
-            <button class="button-remove">Remove</button>
+            <button onclick="goToEdit(${index})" class="button-edit">Edit</button>
+            <button onclick="removeElement(${index})" class="button-remove">Remove</button>
         </div>
     </div>`;
     });
@@ -68,14 +84,28 @@ function findStationery(){
     let findedElement = document.getElementById("finder").value;
     let findResult = [];
     stationeries.forEach(item=>{
-        if(findedElement==item.targetAge){
-            findResult.push(item);
+        switch(true){
+            case item.price.toString().includes(findedElement):
+                findResult.push(item);
+                break;
+            case item.producer.includes(findedElement):
+                findResult.push(item);
+                break;
+            case item.barCode.includes(findedElement):
+                findResult.push(item);
+                break;
+            case item.targetAge.toString().includes(findedElement):
+                findResult.push(item);
+                break;
         }
     });
-    showStationery(findResult);
+    if (findedElement == "") {
+        showStationery(stationeries);
+    } else{
+        showStationery(findResult);
+    }
 }
 
-function clearStationery(){
-    document.getElementById("finder").value = "";
-    showStationery(stationeries);
-}   
+function goToEdit(index) {
+    window.location = "/edit.html?index=" + index;
+}

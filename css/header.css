@@ -25,32 +25,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 45vw;
+    width: 25vw;
 }
 
-.header__right-type input{
+.header__right input{
     height: 42px;
     width: 360px;
     border-radius: 5px;
-    box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.3);
-}
-
-.button-search{
-    height: 48px;
-    width: 148px;
-    color: blue;
-    background: #FFF;
-    border-radius: 5px;
-    border-color: rgba(0, 0, 255, 0.5);
-    box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.3);
-}
-
-.button-clear{
-    height: 48px;
-    width: 148px;
-    color: red;
-    background: #FFF;
-    border-radius: 5px;
-    border-color: rgba(255, 0, 0, 0.5);
     box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.3);
 }
