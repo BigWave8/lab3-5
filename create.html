@@ -15,14 +15,6 @@
             <a class="header__nav-item" href="index.html">My Stationeries<a>
             <a class="header__nav-item" href="">Create Stationery<a>
         </div>
-        <div class="header__right">
-            <div class="header__right-type">
-                <input type="text" name="search"
-                placeholder=" Type something there..." id="finder">
-            </div>
-            <button class="button-search" onclick="findStationery()">Search</button>
-            <button class="button-clear" onclick="clearStationery()">Clear</button>
-        </div>
     </header>
     <section class="create container">
         <form name="editStationery" action="index.html">
@@ -33,9 +25,12 @@
     
             <label for="producer">Producer:</label>
             <select id="producer_select" name="producer">
-                <option value="Apple" selected>Apple</option>
-                <option value="WIN">WIN</option>
-                <option value="Skiper">Skiper</option>
+                <option value="Ukraine" selected>Ukraine</option>
+                <option value="USA">USA</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Poland">Poland</option>
+                <option value="China">China</option>
+                <option value="Japan">Japan</option>
             </select>
 
             <label for="barCode">Bar code:</label>
@@ -53,6 +48,6 @@
             <span class="popup-close">&times;</span>
         </div>
     </div>
-    <script src="js/create.js"></script>
+    <script src="js/create.js" type="module"></script>
 </body>
 </html>

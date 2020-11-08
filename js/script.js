@@ -1,91 +1,69 @@
-const submitButton = document.getElementById("submit_button");
-const removeButton = document.getElementById("remove_button");
+import { deleteStationery, getAllStationeries} from "./api.js";
 
-let stationeries = [{
-    price: 123,
-    producer: "WIN",
-    barCode: "12341234",
-    targetAge: 12,
-},
-{
-    price: 100,
-    producer: "WIN",
-    barCode: "121211234",
-    targetAge: 10,
-},
-{
-    price: 121,
-    producer: "WIN",
-    barCode: "11111234",
-    targetAge: 9,
-},
-{
-    price: 99,
-    producer: "WIN",
-    barCode: "12341234",
-    targetAge: 15,
-},
-{
-    price: 101,
-    producer: "Skiper",
-    barCode: "11111111",
-    targetAge: 18,
-}]
+let stationeries;
+let primaryStationeries;
 
 const stationeriesContainer = document.getElementById("stationeries");
+const sortItems = document.getElementById("sorter");
+const countPrice = document.getElementById("count_price");
+const findItems = document.getElementById("finder");
 
-const addItem = ({ price, producer, barCode, targetAge }) => {
-    const generatedId = uuid.v1();
-    const newItem = {
-    id: generatedId,
-    price, 
-    producer, 
-    barCode, 
-    targetAge,
-    };
-    stationeries.push(newItem);
-    addItemToPage(newItem);
+export const refetchAllStationeries = async () => {
+    const allStationeries = await getAllStationeries();
+    primaryStationeries = [...allStationeries];
+    stationeries = allStationeries;
+    showStationery(stationeries);
+    addEvent();
 };
+refetchAllStationeries();
 
 function showStationery(stationeries){
     let innerItem = "";
-    stationeries.forEach((item, index)=>{
+    stationeries.forEach((item)=>{
         innerItem += `<div class="object">
         <img class="notebook-icon" src="images/notebook.svg" alt="Notebook">
         <h2 class="object-name">Notebook</h2>
-        <p class="object-description">Price: ${item.price} UAH<br>Producer: ${item.producer}<br>Bar code: ${item.barCode}<br>Target age: ${item.targetAge}</code></p>
-        <div class="time-update">Last time update: 1s</div>
+        <p class="object-description">Price: ${item.priceInHryvnia} UAH<br>Producer: ${item.producer}<br>Bar code: ${item.barCode}<br>Target age: ${item.targetAge}</code></p>
         <div class="object__button">
-            <button onclick="goToEdit(${index})" class="button-edit">Edit</button>
-            <button onclick="removeElement(${index})" class="button-remove">Remove</button>
+            <button id="edit${item.id}" class="button-edit">Edit</button>
+            <button id="remove${item.id}" class="button-remove">Remove</button>
         </div>
     </div>`;
     });
     stationeriesContainer.innerHTML=innerItem;
 }
-showStationery(stationeries);
 
-function sortStationery(){
-    stationeries.sort(function(obj1, obj2){
-        return obj1.price > obj2.price ? 1:-1;
-    });
+var sort = 1;
+sortItems.onclick = () => {
+    if (sort >= 1){
+        stationeries.sort(function(obj1, obj2){
+            return obj1.priceInHryvnia > obj2.priceInHryvnia ? 1:-1;
+        });
+        sort = 0;
+    } else {
+        stationeries = [...primaryStationeries];
+        sort = 1;
+    }
     showStationery(stationeries);
+    addEvent();
 }
 
-function countStationery(){
+countPrice.onclick = () => {
     let sum = 0;
     stationeries.forEach(item=>{
-        sum += item.price;
+        sum += item.priceInHryvnia;
     });
     document.getElementById("counter").innerHTML=sum;
+    addEvent();
 }
 
-function findStationery(){
+findItems.oninput = () => {
+    stationeries = primaryStationeries;
     let findedElement = document.getElementById("finder").value;
     let findResult = [];
     stationeries.forEach(item=>{
         switch(true){
-            case item.price.toString().includes(findedElement):
+            case item.priceInHryvnia.toString().includes(findedElement):
                 findResult.push(item);
                 break;
             case item.producer.includes(findedElement):
@@ -99,13 +77,28 @@ function findStationery(){
                 break;
         }
     });
+    stationeries = findResult;
     if (findedElement == "") {
-        showStationery(stationeries);
-    } else{
-        showStationery(findResult);
+        stationeries = primaryStationeries;
     }
+    sortItems;
+    showStationery(stationeries);
+    addEvent();
 }
 
-function goToEdit(index) {
-    window.location = "/edit.html?index=" + index;
+const goToEdit = (e) => {
+    const id = e.target.id.replace("edit", "");
+    window.location = "/edit.html?id=" + id;
 }
+const removeElement = (e) => {
+    const id = e.target.id.replace("remove", "");
+    deleteStationery(id).then(refetchAllStationeries);
+};
+const addEvent = () => {
+    stationeries.forEach((item) => {
+        const editButton = document.getElementById(`edit${item.id}`);
+        const removeButton = document.getElementById(`remove${item.id}`);
+        editButton.addEventListener("click", goToEdit);
+        removeButton.addEventListener("click", removeElement);
+    });
+};

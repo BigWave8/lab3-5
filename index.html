@@ -7,9 +7,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" as="font" href="//fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&amp;display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"rel="stylesheet"/>
-
-    <!-- UUID library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.2.0/uuid.min.js"></script>
 </head>
 <body> 
     <header class="header contatiner">
@@ -29,29 +26,19 @@
             <div class="manager-sort">
                 <div class="sort-text">Sort by the most<br>expensive stationery</div>
                 <label class="switch">
-                    <input type="checkbox" onclick="sortStationery()">
+                    <input type="checkbox" id="sorter">
                     <span class="slider round"></span>
                 </label>
             </div>
             <div class="manager-price">
                 <div class="manager-price-text">Count total price:</div>
-                <button class="button-count" onclick="countStationery()">Count</button>
+                <button class="button-count" id="count_price">Count</button>
                 <div class="manager-price-count">Total expenses: <span id="counter"></span> UAH</div>
             </div>
         </div>
         <div class="manager__right" id="stationeries">
-            <div id="object" class="object">
-                <img class="notebook-icon" src="images/notebook.svg" alt="Notebook">
-                <h2 class="object-name">Notebook</h2>
-                <p class="object-description">Price: 123 UAH<br>Producer: WIN<br>Bar code: 12341234<br>Target age: 12</code></p>
-                <div class="time-update">Last time update: 123s</div>
-                <div class="object__button">
-                    <button onclick="goToEdit" class="button-edit">Edit</button>
-                    <button id="remove_button" class="button-remove">Remove</button>
-                </div>
-            </div>
         </div>
     </section>
-    <script  src="js/script.js"></script>
+    <script  src="js/script.js" type="module"></script>
 </body>
 </html>
